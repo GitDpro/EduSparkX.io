@@ -23,8 +23,8 @@
       
       <div class="banner">
         <div class="info">
-          <h1>Learn Math and Science</h1>
-          <h2>-The fun way</h2>
+          <h1 class="h1-type">Learn Math and Science</h1>
+          <h2 class="h2-type">-The fun way</h2>
           <p>
             We teach Math And Science in a fun way to make you enjoy 
             and understand the topics
@@ -43,6 +43,32 @@
         </div>
       </div>
     </div>
-    
+    <script>
+    const h1Text = "Learn math and science.";
+    const h2Text = "The fun way.";
+    const typingH1Element = document.getElementById("type-h1");
+    const typingH2Element = document.getElementById("type-h2");
+    let i = 0;
+
+    function typeText(element, text, callback) {
+      if (i < text.length) {
+        element.textContent += text.charAt(i);
+        i++;
+        setTimeout(() => typeText(element, text, callback), 100); // Adjust typing speed (in milliseconds)
+      } else {
+        callback(); // Call the callback function when typing is complete
+      }
+    }
+
+    // Start typing effect for h1 and h2 when the page loads
+    window.onload = function () {
+      typeText(typingH1Element, h1Text, () => {
+        i = 0;
+        typeText(typingH2Element, h2Text, () => {
+          // Typing is complete for both h1 and h2
+        });
+      });
+    };
+  </script>
   </body>
 </html>
